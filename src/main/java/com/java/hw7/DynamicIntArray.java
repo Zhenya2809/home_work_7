@@ -32,11 +32,13 @@ public class DynamicIntArray {
      * @return true if successfully removed and false if the array doesn't contain such an element
      */
     public boolean remove(int element) {
-        if (array[0] == element) {
-            System.arraycopy(array, 1, array, 0, array.length - 1);
-            size--;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == element) {
+                System.arraycopy(array, 1, array, 0, array.length - 1);
+                size--;
+            }
             return true;
-        } else return false;
+        }  return false;
     }
 
     /**
@@ -47,7 +49,9 @@ public class DynamicIntArray {
      * @return true if successfully updated and false if the array doesn't contain such an element
      */
     public boolean update(int element, int index) {
+
         if (index >= size) {
+
             return false;
         } else {
             array[index] = element;
